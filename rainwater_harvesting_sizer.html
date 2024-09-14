@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rainwater Harvesting System Sizer</title>
+    <style>
+        /* Same styles as before */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rainwater Harvesting System Sizer</h1>
+
+        <form id="rainwaterForm">
+            <div>
+                <label for="area">Catchment Area (sq meters):</label>
+                <input type="number" id="area" name="area" placeholder="Enter roof area in square meters" required>
+            </div>
+            <div>
+                <label for="state">Select State:</label>
+                <select id="state" name="state" onchange="updateRainfall()">
+                    <option value="">-- Select a State --</option>
+                    <!-- State options will be populated here -->
+                </select>
+            </div>
+            <div>
+                <label for="rainfall">Annual Rainfall (mm):</label>
+                <input type="number" id="rainfall" name="rainfall" placeholder="Enter annual rainfall in millimeters" required>
+            </div>
+            <div>
+                <label for="coefficient">Runoff Coefficient (0-1):</label>
+                <input type="number" step="0.01" id="coefficient" name="coefficient" placeholder="Enter runoff coefficient (e.g., 0.85)" required>
+            </div>
+            <div>
+                <label for="efficiency">System Efficiency (0-1):</label>
+                <input type="number" step="0.01" id="efficiency" name="efficiency" placeholder="Enter system efficiency (e.g., 0.9)" required>
+            </div>
+            <div>
+                <label for="occupants">Number of Occupants:</label>
+                <input type="number" id="occupants" name="occupants" placeholder="Enter number of occupants" required>
+            </div>
+            <div>
+                <label for="dailyUsage">Daily Water Usage per Person (liters):</label>
+                <input type="number" id="dailyUsage" name="dailyUsage" placeholder="Enter daily water usage per person" required>
+            </div>
+            <button type="button" onclick="calculateResults()">Calculate</button>
+        </form>
+
+        <div class="result" id="result" style="display:none;">
+            <h2>Results</h2>
+            <p id="harvestedVolume">Total Harvested Water: </p>
+            <p id="cisternSize">Required Cistern Size: </p>
+            <p id="occupantSupport">Water Support for Occupants: </p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
